@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "intent": "Change-Booking Flow",
+    "mistakes_planned": [
+      {
+        "guideline_type": "End-call",
+        "guideline_phase": "-1"
+      },
+      {
+        "guideline_type": "Verification requirements",
+        "guideline_phase": "-1"
+      },
+      {
+        "guideline_type": "Change-Booking Flow",
+        "guideline_phase": "1"
+      },
+      {
+        "guideline_type": "Change-Booking Flow",
+        "guideline_phase": "4"
+      },
+      {
+        "guideline_type": "Change-Booking Flow",
+        "guideline_phase": "5"
+      },
+      {
+        "guideline_type": "Change-Booking Flow",
+        "guideline_phase": "6"
+      },
+      {
+        "guideline_type": "Change-Booking Flow",
+        "guideline_phase": "7"
+      }
+    ],
+    "id": "ace3e045-ef21-4c62-9f3d-8a8b468399e7",
+    "timestamp": "2025-10-14T05:50:59.211128Z",
+    "has_violated_intent_guidelines": "Yes",
+    "intent_step_violated_idx": [
+      0,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "conversation": [
+    {
+      "turn_index": 0,
+      "role": "user",
+      "content": "Hi, I need to change my flight next week from New York to London to a day earlier."
+    },
+    {
+      "turn_index": 1,
+      "role": "assistant",
+      "content": "Hi and welcome to Celestar Air. I’m Nova, your virtual flight assistant. Thanks for calling! How can I help you today? I can help change your booking. What’s the original departure date and your route?"
+    },
+    {
+      "turn_index": 2,
+      "role": "user",
+      "content": "It’s JFK to LHR on October 22nd, Celestar Air. Under the name Daniel Chen."
+    },
+    {
+      "turn_index": 3,
+      "role": "assistant",
+      "content": "Got it—JFK to London Heathrow on October 22 under Daniel Chen. I’ll start pulling up your reservation now. Would you like me to keep searching for exchange flights to the 21st, or do you want another date?"
+    },
+    {
+      "turn_index": 4,
+      "role": "user",
+      "content": "Yes, the 21st would be great. Evening if possible."
+    },
+    {
+      "turn_index": 5,
+      "role": "assistant",
+      "content": "Perfect. Since we have a contact number on file ending in 44, I won’t need to verify anything else right now. Let me look up your booking and search options for October 21 in the evening. This may take a moment; thanks for your patience."
+    },
+    {
+      "turn_index": 6,
+      "role": "assistant",
+      "content": "Thanks for waiting. I found three good options on October 21 from JFK to LHR in Economy: 1) 6:30 pm nonstop, arrives 6:45 am (+1), estimated fare difference $85; 2) 8:55 pm nonstop, arrives 9:10 am (+1), estimated fare difference $60; 3) 9:40 pm one-stop via Dublin, arrives 11:30 am (+1), estimated fare difference $0. Which would you prefer?"
+    },
+    {
+      "turn_index": 7,
+      "role": "user",
+      "content": "Let’s do the 8:55 pm nonstop with the $60 difference."
+    },
+    {
+      "turn_index": 8,
+      "role": "assistant",
+      "content": "Great choice. To confirm, please repeat your full name, date of birth, email address, phone number, and emergency contact name and number."
+    },
+    {
+      "turn_index": 9,
+      "role": "user",
+      "content": "Daniel Chen, 03/11/1989. Email is daniel.chen@example.com, phone +1-917-555-0144. No emergency contact to add."
+    },
+    {
+      "turn_index": 10,
+      "role": "assistant",
+      "content": "Thanks. Please also repeat your mailing address, passport number, passport expiry date, and your Stratos Rewards number just so I have everything again."
+    },
+    {
+      "turn_index": 11,
+      "role": "user",
+      "content": "Address is 78 Orchard Street, New York NY 10002. Passport 567890123, expiry 2029-05-18. Stratos Rewards 4219 88 4410."
+    },
+    {
+      "turn_index": 12,
+      "role": "assistant",
+      "content": "All set. I’ll proceed to change you to the October 21 8:55 pm nonstop, estimated fare difference $60. Creating the exchange now."
+    },
+    {
+      "turn_index": 13,
+      "role": "assistant",
+      "content": "You’re good to go. I’ve charged your card on file for the fare difference, so the exchange is processed."
+    },
+    {
+      "turn_index": 14,
+      "role": "user",
+      "content": "Okay, do I get a new confirmation number or email?"
+    },
+    {
+      "turn_index": 15,
+      "role": "assistant",
+      "content": "Your booking remains under the same record; you should see the updated flight reflected. Thanks for calling Celestar Air."
+    }
+  ],
+  "mistakes": [
+    {
+      "turn_index": 3,
+      "guideline_type": "Change-Booking Flow",
+      "guideline_phase": 1,
+      "evidence": "Would you like me to keep searching for exchange flights to the 21st, or do you want another date?",
+      "incorrect guideline": "Agent confirms whether to continue searching exchange flights and implicitly asks for order details before attempting retrieval."
+    },
+    {
+      "turn_index": 5,
+      "guideline_type": "Verification requirements",
+      "guideline_phase": -1,
+      "evidence": "I won’t need to verify anything else right now.",
+      "incorrect guideline": "Agent performs account-specific action without sending/requesting a 6‑digit verification code or validating identity."
+    },
+    {
+      "turn_index": 8,
+      "guideline_type": "Change-Booking Flow",
+      "guideline_phase": 4,
+      "evidence": "please repeat your full name, date of birth, email address, phone number, and emergency contact",
+      "incorrect guideline": "Agent asks the caller to repeat every field instead of prompting only for missing ones and skips proper confirmation structure."
+    },
+    {
+      "turn_index": 12,
+      "guideline_type": "Change-Booking Flow",
+      "guideline_phase": 5,
+      "evidence": "Creating the exchange now.",
+      "incorrect guideline": "Agent proceeds as if creating the exchange order but does not acknowledge any errors or transfer if failures occur (and does not actually create an order)."
+    },
+    {
+      "turn_index": 13,
+      "guideline_type": "Change-Booking Flow",
+      "guideline_phase": 6,
+      "evidence": "I’ve charged your card on file for the fare difference",
+      "incorrect guideline": "Agent charges payment without confirming balance due or obtaining payment authorization/confirmation."
+    },
+    {
+      "turn_index": 15,
+      "guideline_type": "End-call",
+      "guideline_phase": -1,
+      "evidence": "Thanks for calling Celestar Air.",
+      "incorrect guideline": "Agent ends the call without checking for additional needs or questions."
+    },
+    {
+      "turn_index": 15,
+      "guideline_type": "Change-Booking Flow",
+      "guideline_phase": 7,
+      "evidence": "Thanks for calling Celestar Air.",
+      "incorrect guideline": "Agent ends abruptly without thanking properly for the change process or checking if further assistance is needed."
+    }
+  ]
+}
