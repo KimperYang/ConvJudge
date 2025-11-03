@@ -53,8 +53,8 @@ def discover_models(evaluation_root: Path) -> Dict[str, Dict[str, float]]:
     for model_dir in sorted(evaluation_root.iterdir()):
         if not model_dir.is_dir():
             continue
-        if model_dir.name.startswith("o4-mini"):
-            continue
+        # if model_dir.name.startswith("o4-mini"):
+        #     continue
         summary_path = model_dir / "evaluation_summary.csv"
         if not summary_path.exists():
             continue
@@ -99,6 +99,7 @@ def plot_metrics(
         "#56A3A6",  # teal
         "#BC4B51",  # muted red
         "#5E4AE3",  # indigo
+        "#705220",  # bright orange
     ]
 
     for idx, metric in enumerate(metrics):
@@ -147,7 +148,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--evaluation-root",
         type=Path,
-        default=Path("dump/evaluation"),
+        default=Path("dump/eval_simulated"),
         help="Root directory containing per-model evaluation folders.",
     )
     parser.add_argument(
@@ -159,7 +160,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("figures/evaluation_overview.png"),
+        default=Path("figures/evaluation_simulated.png"),
         help="Path for the generated plot.",
     )
     parser.add_argument(
